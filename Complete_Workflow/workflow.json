@@ -1,0 +1,81 @@
+{
+  "output_directory": "Results",
+  "network": {
+    "chains": 25,
+    "beads_per_chain": 1000,
+    "phi_initial": 0.5,
+    "seed": 26
+  },
+  "cgmd_command": [
+    "lmp"
+  ],
+  "dnm_command": [
+    "lmp_pade"
+  ],
+  "cgmd": {
+    "dt": 1e-05,
+    "dump_every": 1000000,
+    "pull_steps": 3000000,
+    "hold_steps": 30000000,
+    "initial_hold_steps": 100000000,
+    "phi_target": 0.02,
+    "loading_mode": "tension"
+  },
+  "dnm": {
+    "dt": 0.0001,
+    "dump_every": 10000,
+    "pull_steps": 100000,
+    "hold_steps": 100000
+  },
+  "distillation": {
+    "timestep": "undeformed",
+    "ln_threshold": 0.0,
+    "merge_cutoff": 1.0,
+    "topology_merge_cutoff": 0.5
+  },
+  "make_plots": true,
+  "strain_grid": {
+    "start": 0.0,
+    "stop": 0.3,
+    "count": 20
+  },
+  "batch": {
+    "chains": [
+      25,
+      50
+    ],
+    "phi_initial": [
+      0.5
+    ],
+    "sweep_plan": [
+      {
+        "phi_target": 0.01,
+        "tension": 3,
+        "compression": 3,
+        "pure_shear": 3
+      },
+      {
+        "phi_target": 0.02,
+        "tension": 3,
+        "compression": 3,
+        "pure_shear": 3
+      },
+      {
+        "phi_target": 0.05,
+        "tension": 3,
+        "compression": 3,
+        "pure_shear": 3
+      },
+      {
+        "phi_target": 0.1,
+        "tension": 3,
+        "compression": 3,
+        "pure_shear": 3
+      }
+    ],
+    "total_beads": [
+      25000,
+      50000
+    ]
+  }
+}
